@@ -20,6 +20,10 @@ public class MenuRepository {
         menuList.add(new Dessert("마카롱", 2000));
     }
 
+    public List<MenuItem> getAllMenu() {
+        return menuList;
+    }
+
     public MenuItem findByName(String name) {
         for (MenuItem item : menuList) {
             if (item.getName().equals(name)) {
@@ -28,6 +32,7 @@ public class MenuRepository {
         }
         return null;
     }
+
 
     public List<MenuItem> getMenuByCategory(String category) {
         return menuList.stream()
