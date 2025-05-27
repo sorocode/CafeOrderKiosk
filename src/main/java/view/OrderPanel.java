@@ -1,5 +1,7 @@
 package view;
 
-// TODO: 주문 및 결제를 처리하는 페이지
-public class OrderPanel {
+import javax.swing.*;
+
+// TODO: 주문 패널
+public class OrderPanel extends JPanel {
 }
