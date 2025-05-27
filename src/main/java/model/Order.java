@@ -33,4 +33,13 @@ public class Order {
     public List<MenuItem> getItems() {
         return items;
     }
+
+    public String getOrderSummary() {
+        StringBuilder sb = new StringBuilder();
+        for (MenuItem item : items) {
+            sb.append(item.getName()).append(" - ").append(item.getPrice()).append("원\n");
+        }
+        sb.append("총합: ").append(getTotalPrice()).append("원");
+        return sb.toString();
+    }
 }
