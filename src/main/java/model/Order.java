@@ -1,17 +1,36 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-// TODO: 주문(결제)
 public class Order {
     private List<MenuItem> items;
 
-    public Order(List<MenuItem> items) {
-        this.items = items;
+    public Order() {
+        this.items = new ArrayList<>();
     }
-    // TODO: 메뉴 추가
-    // TODO: 메뉴 전체 삭제
-    // TODO: 총 가격 계산
-    // TODO: 주문 목록 반환
 
+    // 메뉴 추가
+    public void addItem(MenuItem item) {
+        items.add(item);
+    }
+
+    // 메뉴 전체 삭제
+    public void clearItems() {
+        items.clear();
+    }
+
+    // 총 가격 계산
+    public int getTotalPrice() {
+        int total = 0;
+        for (MenuItem item : items) {
+            total += item.getPrice();
+        }
+        return total;
+    }
+
+    // 주문 목록 반환
+    public List<MenuItem> getItems() {
+        return items;
+    }
 }
