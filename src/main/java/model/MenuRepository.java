@@ -10,14 +10,22 @@ public class MenuRepository {
     public MenuRepository() {
         menuList = new ArrayList<>();
 
-        menuList.add(new Coffee("아메리카노", 3000));
-        menuList.add(new Coffee("카페라떼", 3500));
+        menuList.add(new Coffee("아메리카노", 3000, "/images/americano.png"));
+        menuList.add(new Coffee("카페라떼", 3500, "/images/latte.png"));
+        menuList.add(new Coffee("카라멜마끼야또", 4000, "/images/caramel.jpg"));
+        menuList.add(new Coffee("카페모카", 3800, "/images/mocha.jpg"));
+        menuList.add(new Coffee("에스프레소", 2000, "/images/espresso.jpg"));
 
-        menuList.add(new Beverage("레몬에이드", 4000));
-        menuList.add(new Beverage("아이스티", 3800));
+        menuList.add(new Beverage("레몬에이드", 4000, "/images/lemonade.png"));
+        menuList.add(new Beverage("청포도에이드", 3800, "/images/lemonade.png"));
+        menuList.add(new Beverage("블루베리에이드", 3800, "/images/blueberryade.jpg"));
+        menuList.add(new Beverage("청귤에이드", 3800, "/images/lemonade.png"));
+        menuList.add(new Beverage("아이스티", 3800, "/images/icetea.jpg"));
 
-        menuList.add(new Dessert("치즈케이크", 4500));
-        menuList.add(new Dessert("마카롱", 2000));
+        menuList.add(new Dessert("치즈케이크", 4500, "/images/cheesecake.jpg"));
+        menuList.add(new Dessert("초코케이크", 4500, "/images/chocolatecake.jpg"));
+        menuList.add(new Dessert("딸기케이크", 4500, "/images/strawberrycake.jpg"));
+        menuList.add(new Dessert("마카롱", 2000, "/images/macaron.jpg"));
     }
 
     public List<MenuItem> getAllMenu() {
