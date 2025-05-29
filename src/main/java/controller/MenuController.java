@@ -16,16 +16,26 @@ public class MenuController {
         this.view = view;
     }
 
-    // KioskMainView의 displayMenuButtons를 사용하면 될 듯 합니다. 
-    // TODO: 커피 메뉴 화면 보여주기
+    //==카테고리 선택==//
+
+    /**
+     * 커피
+     */
     public void showCoffeeMenu() {
+        view.displayMenuButtons(menuRepository.getMenuByCategory("Coffee"));
     }
 
-    // TODO:음료 메뉴 화면 보여주기
+    /**
+     * 음료
+     */
     public void showBeverageMenu() {
+        view.displayMenuButtons(menuRepository.getMenuByCategory("Beverage"));
     }
 
-    // TODO: 디저트 메뉴 화면 보여주기
+    /**
+     * 디저트
+     */
     public void showDessertMenu() {
+        view.displayMenuButtons(menuRepository.getMenuByCategory("Dessert"));
     }
 }
