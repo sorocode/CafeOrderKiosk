@@ -3,6 +3,7 @@ package controller;
 import model.MenuItem;
 import model.MenuRepository;
 import model.Order;
+import model.PaymentType;
 import view.KioskMainView;
 
 public class OrderController {
@@ -52,14 +53,19 @@ public class OrderController {
     /**
      * '결제' 버튼 클릭 시 호출
      */
+
     public void handlePayment() {
         if (order.getItems().isEmpty()) {
             view.showError("주문 내역이 없습니다.");
             return;
         }
 
+        PaymentType method = view.askPaymentMethod() == 0 ? PaymentType.CARD : PaymentType.CASH;
+        order.setMode(method); // 카드=0, 현금=1
+
         int total = order.getTotalPrice();
-        view.showMessage("결제 완료! 총액: " + total + "원");
+        String payment = (method == PaymentType.CARD) ? "카드" : "현금";
+        view.showMessage("결제 완료! (" + payment + ")\n총액: " + total + "원");
 
         order.clearItems();
         view.updateOrderSummary(""); // 주문창 비우기

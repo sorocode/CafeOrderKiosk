@@ -3,8 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Order {
+
     private List<MenuItem> items;
+    private PaymentType mode;
 
     public Order() {
         this.items = new ArrayList<>();
@@ -29,9 +32,19 @@ public class Order {
         return total;
     }
 
+    // 결제 방식 가져오기
+    public PaymentType getMode() {
+        return this.mode;
+    }
+
+    // 결제 방식 설정
+    public void setMode(PaymentType m) {
+        this.mode = m;
+    }
+
     // 주문 목록 반환
     public List<MenuItem> getItems() {
-        return items;
+        return new ArrayList<>(items);
     }
 
     public String getOrderSummary() {
