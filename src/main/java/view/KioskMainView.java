@@ -17,6 +17,9 @@ public class KioskMainView extends JFrame {
     JButton menuButton;
     private JPanel menuPanel;
     private OrderPanel orderPanel;
+    private CardLayout cardLayout = new CardLayout();
+    private JPanel mainPanel, startPanel, kioskPanel;
+    private JButton startButton;
 
     public KioskMainView(MenuController menuController, OrderController orderController) {
         this.menuController = menuController;
@@ -26,6 +29,28 @@ public class KioskMainView extends JFrame {
         setSize(800, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        //==시작 화면==//
+        mainPanel = new JPanel();
+        mainPanel.setLayout(cardLayout);
+        startPanel = new JPanel();
+        startPanel.setLayout(new BorderLayout());
+        startButton = new JButton("주문하기");
+        startButton.addActionListener(new DisplayMenuActionListener());
+        startButton.setPreferredSize(new Dimension(600, 200));
+        startButton.setFont(new Font("Dialog", Font.PLAIN, 40));
+
+        ImageIcon startIcon = new ImageIcon(getClass().getResource("/images/startimage.png")); // 시작 화면 이미지 생성
+        Image image = startIcon.getImage();
+        Image updatedstartImage = image.getScaledInstance(600, 700, Image.SCALE_SMOOTH);
+        ImageIcon updatedStartIcon = new ImageIcon(updatedstartImage); // 사진 크기 조정 과정
+
+        JLabel startImage = new JLabel(updatedStartIcon);
+
+        startPanel.add(startImage, BorderLayout.CENTER);
+        startPanel.add(startButton, BorderLayout.SOUTH);
+
+        kioskPanel = new JPanel();
+        kioskPanel.setLayout(new BorderLayout());
 
         //==상단(카테고리 패널)==//
         JPanel categoryPanel = new JPanel();
@@ -59,12 +84,18 @@ public class KioskMainView extends JFrame {
         orderPanel = new OrderPanel();
         orderPanel.setClearAction(() -> orderController.handleClearOrder());
         orderPanel.setPayAction(() -> orderController.handlePayment());
-        add(categoryPanel, BorderLayout.NORTH);
-        add(new JScrollPane(menuPanel), BorderLayout.CENTER); // 메뉴는 스크롤이 가능하도록 설정함
+        kioskPanel.add(categoryPanel, BorderLayout.NORTH);
+        kioskPanel.add(new JScrollPane(menuPanel), BorderLayout.CENTER); // 메뉴는 스크롤이 가능하도록 설정함
 
-        add(orderPanel, BorderLayout.EAST);
+        kioskPanel.add(orderPanel, BorderLayout.EAST);
+
+        mainPanel.add(startPanel, "start"); // mainPanel에 start라는 이름으로 시작화면 추가
+        mainPanel.add(kioskPanel, "kiosk"); // mainPanel에 kiosk라는 이름으로 주문화면 추가
+
+        add(mainPanel);
 
         setVisible(true);
+
     }
 
     /**
@@ -147,7 +178,17 @@ public class KioskMainView extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == coffeeButton) {
+            if (e.getSource() == startButton) { // 시작 버튼 누를 때 커피 화면 띄우기
+                cardLayout.show(mainPanel, "kiosk");
+                coffeeButton.setBackground(Color.black);
+                coffeeButton.setForeground(Color.white);
+                beverageButton.setBackground(Color.lightGray);
+                beverageButton.setForeground(Color.black);
+                dessertButton.setBackground(Color.lightGray);
+                dessertButton.setForeground(Color.black);
+                menuController.showCoffeeMenu();
+
+            } else if (e.getSource() == coffeeButton) {
                 coffeeButton.setBackground(Color.black);
                 coffeeButton.setForeground(Color.white);
                 beverageButton.setBackground(Color.lightGray);
