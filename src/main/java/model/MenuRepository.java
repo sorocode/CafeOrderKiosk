@@ -17,9 +17,9 @@ public class MenuRepository {
         menuList.add(new Coffee("에스프레소", 2000, "/images/espresso.jpg"));
 
         menuList.add(new Beverage("레몬에이드", 4000, "/images/lemonade.png"));
-        menuList.add(new Beverage("쿠앤크프라푸치노", 3800, "/images/쿠앤크프라푸치노.jpeg"));
+        menuList.add(new Beverage("쿠앤크프라푸치노", 3800, "/images/cookieAndCream.jpeg"));
         menuList.add(new Beverage("블루베리에이드", 3800, "/images/blueberryade.jpg"));
-        menuList.add(new Beverage("청귤에이드", 3800, "/images/청귤.jpg"));
+        menuList.add(new Beverage("청귤에이드", 3800, "/images/chunggyul.jpg"));
         menuList.add(new Beverage("아이스티", 3800, "/images/icetea.jpg"));
 
         menuList.add(new Dessert("치즈케이크", 4500, "/images/cheesecake.jpg"));
