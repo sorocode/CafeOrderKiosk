@@ -99,15 +99,6 @@ public class KioskMainView extends JFrame {
     }
 
     /**
-     * 결제 방식 선택창 띄우기
-     */
-    public int askPaymentMethod() {
-        String[] options = {"카드", "현금"};
-        int choice = JOptionPane.showOptionDialog(this, "결제 방식을 선택하세요.", "결제 방식", 0, 0, null, options, options[0]);
-        return choice;
-    }
-
-    /**
      * 메뉴 버튼 동적 생성
      */
     public void displayMenuButtons(List<MenuItem> items) {
